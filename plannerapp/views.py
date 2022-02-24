@@ -52,10 +52,12 @@ def add(response):
             
 
             # Temporarily getting first user - (while there is no login & signup for basic users)
-            obj.User_ID = User.objects.all()[0]
+            obj.User_ID = response.user
 
             obj.save()
 
+
+            return render(response, "plannerapp/success.html")
         
 
     content = {
@@ -64,6 +66,9 @@ def add(response):
 
     return render(response, "plannerapp/add_absence.html", content)
 
+
+def success_page(request):
+    return render(request, "plannerapp/success.html")
 
 
 def details_page(request):
